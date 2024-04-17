@@ -4,6 +4,8 @@ import ReactFlow, {
   useNodesState,
   useEdgesState,
   addEdge,
+  MiniMap,
+  Panel,
 } from 'reactflow';
 
 import { initialNodes, initialEdges } from './nodes-edges';
@@ -80,6 +82,10 @@ const Flow = () => {
       nodeTypes={nodeTypes}
       fitView
     >
+      <Panel position="topleft">
+          <h3>Node Toolbar position:</h3>
+      </Panel>
+      <MiniMap />
       <Background />
       {menu && <ContextMenu onClick={onPaneClick} {...menu} />}
     </ReactFlow>
