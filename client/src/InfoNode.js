@@ -7,6 +7,9 @@ import {
   Position,
 } from 'reactflow';
 
+const Card = styled.div`
+  border: 1px solid #000000;
+`
 const Panel = styled.div`
   width: 300px;
   text-align: left;
@@ -49,7 +52,7 @@ export default memo((node) => {
   console.log(node.data.elements);
 
   return (
-    <>
+    <Card>
     <div>{node.data.label}</div>
 
     <Panel>
@@ -84,6 +87,6 @@ export default memo((node) => {
       style={{background: '#555'}}
 
     />
-  </>
+  </Card>
   );
 });
