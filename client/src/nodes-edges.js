@@ -7,8 +7,8 @@ console.log(nodesElements);
 
 
 export const initialNodes = [
-    { id: 's1', type: 'infoNode', position: { x: 0, y: 0 },   data: { label:'S1', elements: {s1Elements}}},
-    { id: 's2', type: 'infoNode', position: { x: 400, y: 0 }, data: { label:'S2', elements: {s2Elements}}},
+    { id: 's1', type: 'infoNode', position: { x: 0, y: 0 },   data: { label:'S1', elements: s1Elements}},
+    { id: 's2', type: 'infoNode', position: { x: 400, y: 0 }, data: { label:'S2', elements: s2Elements}},
 ];
 
   export const initialEdges = [
