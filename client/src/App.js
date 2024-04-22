@@ -82,11 +82,10 @@ const Flow = () => {
       nodeTypes={nodeTypes}
       fitView
     >
-      <Panel position="topleft">
+      <Panel position="topleft" class="toolbar">
           <h3>Node Toolbar position:</h3>
       </Panel>
       <MiniMap />
-      <Background />
       {menu && <ContextMenu onClick={onPaneClick} {...menu} />}
     </ReactFlow>
   );
