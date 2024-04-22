@@ -84,8 +84,25 @@ export default memo((node) => {
       type="source"
       position={Position.Right}
       id="a"
-      style={{background: '#555'}}
-
+      style={{ background: '#555'}}
+    />
+    <Handle
+      type="source"
+      position={Position.Bottom}
+      id="bh1"
+      style={{ left: 10, background: '#555'}}
+    />
+    <Handle
+      type="source"
+      position={Position.Bottom}
+      id="bh2"
+      style={{left: 60, background: '#555'}}
+    />
+    <Handle
+      type="source"
+      position={Position.Bottom}
+      id="bh3"
+      style={{left: 110, background: '#555'}}
     />
   </Card>
   );
