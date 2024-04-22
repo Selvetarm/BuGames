@@ -1,0 +1,33 @@
+{
+    "nodes": [
+        {
+            "id": "s1",
+            "type": "infoNode",
+            "position": {
+                "x": 0,
+                "y": 0
+            },
+            "data": {
+                "label": "S1"
+            }
+        },
+        {
+            "id": "s2",
+            "type": "infoNode",
+            "position": {
+                "x": 400,
+                "y": 0
+            },
+            "data": {
+                "label": "S2"
+            }
+        }
+    ],
+    "edges": [
+        {
+            "id": "es1-s2",
+            "source": "s1",
+            "target": "s2"
+        }
+    ]
+}

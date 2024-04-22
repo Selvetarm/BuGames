@@ -64,11 +64,11 @@ export default memo((node) => {
       </PanelHeading>
       <PanelContent isCollapsed={isCollapsed}>
         <PanelContentInner>
-        {Object.entries(node.data.elements).map(([key, subject], i) => (
+        {/*{Object.entries(node.data.elements).map(([key, subject], i) => (
           <li className="travelcompany-input" key={i}>
               <span className="input-label">key: {i} Name: {subject.name}</span>
           </li>
-        ))}
+        ))}*/}
         </PanelContentInner>
       </PanelContent>
     </Panel>
