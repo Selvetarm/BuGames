@@ -1,8 +1,10 @@
 import React, { useCallback, useRef, useState } from 'react';
 import ReactFlow, {
+  ReactFlowProvider,
   Background,
   useNodesState,
   useEdgesState,
+  useReactFlow,
   addEdge,
   MiniMap,
   Panel,
@@ -20,10 +22,15 @@ const nodeTypes = {
   infoNode: InfoNode,
 };
 
-const Flow = () => {
+const flowKey = 'example-flow';
+const getNodeId = () => `randomnode_${+new Date()}`;
+
+const BuGames = () => {
   const [nodes, setNodes, onNodesChange] = useNodesState(initialNodes);
   const [edges, setEdges, onEdgesChange] = useEdgesState(initialEdges);
+  const [rfInstance, setRfInstance] = useState(null);
   const [menu, setMenu] = useState(null);
+  const { setViewport } = useReactFlow();
   const ref = useRef(null);
   const yPos = useRef(0);
 
@@ -65,6 +72,40 @@ const Flow = () => {
     [setMenu],
   );
 
+  const onSave = useCallback(() => {
+    if (rfInstance) {
+      const flow = rfInstance.toObject();
+      localStorage.setItem(flowKey, JSON.stringify(flow));
+    }
+  }, [rfInstance]);
+
+  const onRestore = useCallback(() => {
+    const restoreFlow = async () => {
+      const flow = JSON.parse(localStorage.getItem(flowKey));
+
+      if (flow) {
+        const { x = 0, y = 0, zoom = 1 } = flow.viewport;
+        setNodes(flow.nodes || []);
+        setEdges(flow.edges || []);
+        setViewport({ x, y, zoom });
+      }
+    };
+
+    restoreFlow();
+  }, [setNodes, setViewport]);
+
+  const onAdd = useCallback(() => {
+    const newNode = {
+      id: getNodeId(),
+      data: { label: 'Added node' },
+      position: {
+        x: Math.random() * window.innerWidth - 100,
+        y: Math.random() * window.innerHeight,
+      },
+    };
+    setNodes((nds) => nds.concat(newNode));
+  }, [setNodes]);
+
   // Close the context menu if it's open whenever the window is clicked.
   const onPaneClick = useCallback(() => setMenu(null), [setMenu]);
 
@@ -73,6 +114,7 @@ const Flow = () => {
       ref={ref}
       nodes={nodes}
       edges={edges}
+      onInit={setRfInstance}
       onNodesChange={onNodesChange}
       onEdgesChange={onEdgesChange}
       onConnect={onConnect}
@@ -82,8 +124,10 @@ const Flow = () => {
       nodeTypes={nodeTypes}
       fitView
     >
-      <Panel position="topleft" class="toolbar">
-          <h3>Node Toolbar position:</h3>
+      <Panel position="top-left">
+          <button onClick={onSave}>save</button>
+          <button onClick={onRestore}>restore</button>
+          <button onClick={onAdd}>add node</button>
       </Panel>
       <MiniMap />
       {menu && <ContextMenu onClick={onPaneClick} {...menu} />}
@@ -91,4 +135,8 @@ const Flow = () => {
   );
 };
 
-export default Flow;
+export default () => (
+  <ReactFlowProvider>
+    <BuGames />
+  </ReactFlowProvider>
+);
