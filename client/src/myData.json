@@ -2,20 +2,20 @@
     "nodes": [
         {"id": "s1", "type": "infoNode", "position": {"x": 0, "y": 0}, "data": {"label": "S1"}},
         {"id": "s2", "type": "infoNode", "position": {"x": 400, "y": 0}, "data": {"label": "S2"}},
-        {"id": "c1", "position": {"x": 0, "y": 100}, "data": {"label": "c1"}, "parentId": "s1"},
-        {"id": "c2", "position": {"x": 0, "y": 200}, "data": {"label": "c2"}, "parentId": "s1"},
-        {"id": "c3", "position": {"x": 0, "y": 300}, "data": {"label": "c3"}, "parentId": "s1"},
-        {"id": "c4", "position": {"x": 200, "y": 100}, "data": {"label": "c4"}, "parentId": "s1"},
-        {"id": "c5", "position": {"x": 200, "y": 200}, "data": {"label": "c5"}, "parentId": "s1"},
-        {"id": "c6", "position": {"x": 200, "y": 300}, "data": {"label": "c6"}, "parentId": "s1"}
+        {"id": "c1", "position": {"x": 0, "y": 100}, "data": {"label": "c1"}, "parentId": "s1", "targetPosition": "left"},
+        {"id": "c2", "position": {"x": 0, "y": 200}, "data": {"label": "c2"}, "parentId": "s1", "targetPosition": "left"},
+        {"id": "c3", "position": {"x": 0, "y": 300}, "data": {"label": "c3"}, "parentId": "s1", "targetPosition": "left"},
+        {"id": "c4", "position": {"x": 200, "y": 100}, "data": {"label": "c4"}, "parentId": "s1", "targetPosition": "left"},
+        {"id": "c5", "position": {"x": 200, "y": 200}, "data": {"label": "c5"}, "parentId": "s1", "targetPosition": "left"},
+        {"id": "c6", "position": {"x": 200, "y": 300}, "data": {"label": "c6"}, "parentId": "s1", "targetPosition": "left"}
     ],
     "edges": [
-        {"id": "es1-s2", "source": "s1", "target": "s2"},
-        {"id": "es1-c1", "source": "s1", "target": "c1", "sourceHandle": "bh1"},
-        {"id": "es1-c2", "source": "s1", "target": "c2", "sourceHandle": "bh1"},
-        {"id": "es1-c3", "source": "s1", "target": "c3", "sourceHandle": "bh2"},
-        {"id": "es1-c4", "source": "s1", "target": "c4", "sourceHandle": "bh2"},
-        {"id": "es1-c5", "source": "s1", "target": "c5", "sourceHandle": "bh3"},
-        {"id": "es1-c6", "source": "s1", "target": "c6", "sourceHandle": "bh3"}
+        {"type": "smoothstep", "id": "es1-s2", "source": "s1", "target": "s2"},
+        {"type": "smoothstep", "id": "es1-c1", "source": "s1", "target": "c1", "sourceHandle": "bh1"},
+        {"type": "smoothstep", "id": "es1-c2", "source": "s1", "target": "c2", "sourceHandle": "bh1"},
+        {"type": "smoothstep", "id": "es1-c3", "source": "s1", "target": "c3", "sourceHandle": "bh1"},
+        {"type": "smoothstep", "id": "es1-c4", "source": "s1", "target": "c4", "sourceHandle": "bh1"},
+        {"type": "smoothstep", "id": "es1-c5", "source": "s1", "target": "c5", "sourceHandle": "bh1"},
+        {"type": "smoothstep", "id": "es1-c6", "source": "s1", "target": "c6", "sourceHandle": "bh1"}
     ]
 }
